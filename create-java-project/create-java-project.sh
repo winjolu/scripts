@@ -60,14 +60,17 @@ cat <<EOL > $PROJECT_PATH/.vscode/tasks.json
 }
 EOL
 
-# Create a sample Main.java file in the root directory
-cat <<EOL > $PROJECT_PATH/Main.java
+# Check if Main.java exists
+if [ ! -f $PROJECT_PATH/Main.java ]; then
+    # Create a sample Main.java file in the root directory
+    cat <<EOL > $PROJECT_PATH/Main.java
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
     }
 }
 EOL
+fi
 
 # Create a README.md file in the root directory
 cat <<EOL > $PROJECT_PATH/README.md
@@ -83,5 +86,3 @@ This is a template for Java projects in Visual Studio Code.
 EOL
 
 echo "Java project '$PROJECT_PATH' created successfully."
-
-
