@@ -8,9 +8,11 @@ fi
 
 PROJECT_PATH=$1
 
-# Create the directory structure
+# Create the project directory if it doesn't exist
+mkdir -p $PROJECT_PATH
+
+# Create the .vscode directory structure
 mkdir -p $PROJECT_PATH/.vscode
-mkdir -p $PROJECT_PATH/src
 
 # Create the .vscode/launch.json file
 cat <<EOL > $PROJECT_PATH/.vscode/launch.json
@@ -21,7 +23,10 @@ cat <<EOL > $PROJECT_PATH/.vscode/launch.json
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
-            "mainClass": "\${workspaceFolder}/src/Main",
+            "mainClass": "Main",
+            "classPaths": [
+                "\${workspaceFolder}/bin"
+            ],
             "console": "integratedTerminal"
         }
     ]
@@ -40,7 +45,7 @@ cat <<EOL > $PROJECT_PATH/.vscode/tasks.json
             "args": [
                 "-d",
                 "bin",
-                "\${file}"
+                "*.java"
             ],
             "group": {
                 "kind": "build",
@@ -55,8 +60,8 @@ cat <<EOL > $PROJECT_PATH/.vscode/tasks.json
 }
 EOL
 
-# Create the src/Main.java file
-cat <<EOL > $PROJECT_PATH/src/Main.java
+# Create a sample Main.java file in the root directory
+cat <<EOL > $PROJECT_PATH/Main.java
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
@@ -64,7 +69,7 @@ public class Main {
 }
 EOL
 
-# Create the README.md file
+# Create a README.md file in the root directory
 cat <<EOL > $PROJECT_PATH/README.md
 # Java Project Template
 
@@ -72,7 +77,7 @@ This is a template for Java projects in Visual Studio Code.
 
 ## Setup
 
-- Place your Java files in the \`src\` directory.
+- Place your Java files in the project root directory.
 - Use the build task (\`Cmd+Shift+B\` or \`Ctrl+Shift+B\`) to compile.
 - Use the launch configuration (\`F5\`) to run your application.
 EOL
