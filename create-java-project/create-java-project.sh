@@ -84,4 +84,4 @@ EOL
 
 echo "Java project '$PROJECT_PATH' created successfully."
 
-#
+
