@@ -83,3 +83,5 @@ This is a template for Java projects in Visual Studio Code.
 EOL
 
 echo "Java project '$PROJECT_PATH' created successfully."
+
+#
