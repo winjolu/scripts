@@ -12,4 +12,16 @@ chmod +x create-java-project.sh
 ```bash
 code /full/path/to/your/new-java-project
 ```
-4. Happy Hunting!
+4. Build & Run (sub ctrl for cmd on windows / linux)
+```bash
+# build task 
+cmd + shift + b
+
+# open debug view
+cmd + shift + d
+
+# debug (executes code)
+F5
+```
+
+5. Happy Hunting!
